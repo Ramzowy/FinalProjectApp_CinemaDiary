@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FinalProjectApp_CinemaDiary.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body style="background: #7F7B82;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FinalProjectApp_CinemaDiary</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -29,7 +29,44 @@
                     </ul>
                 </div>
             </div>
+        </nav> *@
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary sticky-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-warning fs-4"
+                   asp-controller="Home" asp-action="Index">
+                    🎬 Cinema Diary
+                </a>
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#cdNav"
+                        aria-controls="cdNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="cdNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="Movie" asp-action="TopPicks">Top Picks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="Movie" asp-action="Watchlist">Watchlist</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="Home" asp-action="MovieThoughts">Movie Thoughts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-secondary" asp-controller="Home" asp-action="RealFacts">Real Facts &amp; Fun</a>
+                        </li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="btn btn-warning btn-sm fw-semibold text-dark" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,11 +74,70 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @* <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2026 - FinalProjectApp_CinemaDiary - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+    </footer> *@
+
+    <footer class="bg-dark border-top border-secondary pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+                    <div class="fw-bold text-warning fs-4 mb-1">🎬 Cinema Diary</div>
+                    <p class="text-secondary small mb-3">Two friends. Infinite films. One honest diary.</p>
+                    <p class="text-secondary small lh-lg">
+                        A personal space for film lovers, built with genuine passion and zero pretension. Pull up a seat.
+                    </p>
+                </div>
+
+                <div class="col-6 col-lg-2 offset-lg-1">
+                    <p class="text-warning text-uppercase fw-semibold small mb-3">Explore</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a asp-controller="Home" asp-action="Index" class="text-secondary text-decoration-none small">Home</a></li>
+                        <li class="mb-2"><a asp-controller="Movie" asp-action="TopPicks" class="text-secondary text-decoration-none small">Top Picks</a></li>
+                        <li class="mb-2"><a asp-controller="Movie" asp-action="Watchlist" class="text-secondary text-decoration-none small">Watchlist</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="MovieThoughts" class="text-secondary text-decoration-none small">Movie Thoughts</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-6 col-lg-2">
+                    <p class="text-warning text-uppercase fw-semibold small mb-3">Discover</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a asp-controller="Home" asp-action="RealFacts" class="text-secondary text-decoration-none small">Real Facts &amp; Fun</a></li>
+                        <li class="mb-2"><a asp-controller="Home" asp-action="About" class="text-secondary text-decoration-none small">About Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <p class="text-warning text-uppercase fw-semibold small mb-3">Now Watching</p>
+                    <div class="d-flex align-items-start gap-2 mb-3">
+                        <span class="text-warning">▶</span>
+                        <div>
+                            <div class="text-white small fw-semibold">Dune: Part Two</div>
+                            <div class="text-secondary" style="font-size:.75rem;">Denis Villeneuve · 2024</div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-start gap-2">
+                        <span class="text-secondary">⏭</span>
+                        <div>
+                            <div class="text-secondary small fw-semibold">The Substance</div>
+                            <div class="text-secondary" style="font-size:.75rem;">Coralie Fargeat · 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="border-secondary mt-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                <span class="text-secondary small">© @DateTime.Now.Year Cinema Diary. Made with ♥ for film.</span>
+                <span class="text-secondary" style="font-size:.72rem;">Built with ASP.NET Core &amp; Bootstrap</span>
+            </div>
+        </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

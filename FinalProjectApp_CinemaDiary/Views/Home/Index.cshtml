@@ -1,8 +1,373 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@* The layout already wraps RenderBody() in <div class="container">.
+   We use negative margins to break full-width sections out of it. *@
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+<!-- ============================
+     HERO — Bootstrap Carousel
+============================ -->
+<div class="full-bleed">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5500">
+
+        <div class="carousel-inner">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600&q=80"
+                     class="d-block w-100 object-fit-cover"
+                     style="height:520px;"
+                     alt="Cinema screen">
+                <div class="carousel-caption d-flex flex-column align-items-start text-start"
+                     style="bottom:3rem;left:5%;right:40%;">
+                    <span class="badge bg-warning text-dark mb-2 text-uppercase fw-bold">Drama</span>
+                    <h1 class="display-4 fw-bold text-white mb-2">Movie Thoughts<br>Await You</h1>
+                    <p class="lead text-white-50 mb-3 d-none d-md-block">
+                        Personal reflections, hot takes, and deep dives on the films that stayed with us.
+                    </p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a asp-controller="Home" asp-action="MovieThoughts" class="btn btn-warning fw-semibold text-dark">Read Thoughts</a>
+                        <a asp-controller="Movie" asp-action="TopPicks" class="btn btn-outline-warning">Top Picks</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?w=1600&q=80"
+                     class="d-block w-100 object-fit-cover"
+                     style="height:520px;"
+                     alt="Projector light">
+                <div class="carousel-caption d-flex flex-column align-items-start text-start"
+                     style="bottom:3rem;left:5%;right:40%;">
+                    <span class="badge bg-warning text-dark mb-2 text-uppercase fw-bold">Discovery</span>
+                    <h1 class="display-4 fw-bold text-white mb-2">Our Top<br>Picks</h1>
+                    <p class="lead text-white-50 mb-3 d-none d-md-block">
+                        A curated selection of films we truly believe deserve a spot on every cinephile's list.
+                    </p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a asp-controller="Movie" asp-action="TopPicks" class="btn btn-warning fw-semibold text-dark">Explore Picks</a>
+                        <a asp-controller="Movie" asp-action="Watchlist" class="btn btn-outline-warning">My Watchlist</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=1600&q=80"
+                     class="d-block w-100 object-fit-cover"
+                     style="height:520px;"
+                     alt="Film reel">
+                <div class="carousel-caption d-flex flex-column align-items-start text-start"
+                     style="bottom:3rem;left:5%;right:40%;">
+                    <span class="badge bg-warning text-dark mb-2 text-uppercase fw-bold">Trivia</span>
+                    <h1 class="display-4 fw-bold text-white mb-2">Real Facts<br>&amp; Fun</h1>
+                    <p class="lead text-white-50 mb-3 d-none d-md-block">
+                        Surprising behind-the-scenes stories and facts that change how you see your favourite films.
+                    </p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <a asp-controller="Home" asp-action="RealFacts" class="btn btn-warning fw-semibold text-dark">Discover Facts</a>
+                        <a asp-controller="Home" asp-action="About" class="btn btn-outline-warning">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+                    class="active bg-warning" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                    class="bg-warning" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                    class="bg-warning" aria-label="Slide 3"></button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================
+     WELCOME SECTION
+     (inside layout container, no full-bleed needed)
+============================ -->
+<div class="py-5">
+    <div class="row align-items-center g-5">
+
+        <!-- Intro -->
+        <div class="col-lg-6">
+            <p class="text-warning text-uppercase fw-semibold small mb-1">Welcome</p>
+            <h2 class="display-5 fw-bold mb-3">A Diary Born from Darkened Rooms</h2>
+            <hr class="border-warning opacity-100 mb-4" style="width:48px;border-width:3px;">
+            <div class="card bg-dark border-secondary rounded-3 p-4">
+                <blockquote class="blockquote mb-0">
+                    <p class="text-white-50 fst-italic lh-lg mb-3">
+                        Hey there! We're two friends who bonded over bad popcorn and brilliant cinematography.
+                        Cinema Diary is our little corner of the internet — a place where we log what we watch,
+                        share what we genuinely feel, and celebrate the art of storytelling through film.
+                        No algorithms. No sponsored picks. Just two people and their love for movies.
+                    </p>
+                    <footer class="blockquote-footer text-secondary">
+                        Adrian &amp; Kira — <cite>Co-authors, Cinema Diary</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+
+        <!-- Stats grid -->
+        <div class="col-lg-6">
+            <div class="row g-3 text-center">
+                <div class="col-6">
+                    <div class="card bg-dark border-secondary rounded-3 py-4">
+                        <div class="display-4 fw-bold text-warning">147</div>
+                        <div class="text-secondary small mt-1">Films Watched</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-dark border-secondary rounded-3 py-4">
+                        <div class="display-4 fw-bold text-warning">38</div>
+                        <div class="text-secondary small mt-1">Thoughts Posted</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-dark border-secondary rounded-3 py-4">
+                        <div class="display-4 fw-bold text-warning">12</div>
+                        <div class="text-secondary small mt-1">Genres Explored</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card bg-dark border-secondary rounded-3 py-4">
+                        <div class="display-4 fw-bold text-warning">94</div>
+                        <div class="text-secondary small mt-1">Fun Facts Shared</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================
+     WHAT'S NEW
+============================ -->
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2">
+
+        <div class="d-flex align-items-end justify-content-between flex-wrap gap-3 mb-4">
+            <div>
+                <p class="text-warning text-uppercase fw-semibold small mb-1">Recently on the Screen</p>
+                <h2 class="display-5 fw-bold text-white mb-1">What's New</h2>
+                <hr class="border-warning opacity-100 mt-2 mb-0" style="width:48px;border-width:3px;">
+            </div>
+            <a asp-controller="Movie" asp-action="Index" class="btn btn-outline-warning btn-sm">View All</a>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                         style="height:200px;">
+                        🎬
+                    </div>
+                    <div class="card-body">
+                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Sci-Fi / Thriller</p>
+                        <h5 class="card-title fw-bold">Dune: Part Two</h5>
+                        <p class="text-secondary small mb-2">2024</p>
+                        <p class="card-text text-white-50 small">
+                            Denis Villeneuve's stunning continuation — visually overwhelming and emotionally complex.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-warning small">★★★★★</span>
+                        <span class="badge bg-warning text-dark">Watching</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                         style="height:200px;">
+                        🎭
+                    </div>
+                    <div class="card-body">
+                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Drama</p>
+                        <h5 class="card-title fw-bold">Past Lives</h5>
+                        <p class="text-secondary small mb-2">2023</p>
+                        <p class="card-text text-white-50 small">
+                            A quietly devastating meditation on love and the lives we leave behind.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-warning small">★★★★½</span>
+                        <span class="badge bg-success">Watched</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                         style="height:200px;">
+                        🌑
+                    </div>
+                    <div class="card-body">
+                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">History / Thriller</p>
+                        <h5 class="card-title fw-bold">Oppenheimer</h5>
+                        <p class="text-secondary small mb-2">2023</p>
+                        <p class="card-text text-white-50 small">
+                            Nolan at his most ambitious. A thunderous portrait of brilliance and consequence.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-warning small">★★★★★</span>
+                        <span class="badge bg-success">Watched</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-lg-3">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                         style="height:200px;">
+                        🔮
+                    </div>
+                    <div class="card-body">
+                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Horror / Mystery</p>
+                        <h5 class="card-title fw-bold">The Substance</h5>
+                        <p class="text-secondary small mb-2">2024</p>
+                        <p class="card-text text-white-50 small">
+                            Bold, grotesque, and audaciously original. On our list this weekend.
+                        </p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-secondary small">— Unwatched —</span>
+                        <span class="badge bg-primary">Up Next</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================
+     TESTIMONIALS
+============================ -->
+<div class="py-5">
+
+    <div class="text-center mb-5">
+        <p class="text-warning text-uppercase fw-semibold small mb-1">What Readers Say</p>
+        <h2 class="display-5 fw-bold mb-2">Voices from the Cinema Community</h2>
+        <hr class="border-warning opacity-100 mx-auto" style="width:48px;border-width:3px;">
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                <div class="card-body p-0">
+                    <div class="display-4 text-warning lh-1 mb-2">&ldquo;</div>
+                    <p class="text-white-50 fst-italic mb-4">
+                        Reading Cinema Diary feels like talking to friends who actually get it. Their take on Past Lives made me want to rewatch it immediately.
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold text-warning flex-shrink-0"
+                             style="width:40px;height:40px;">
+                            S
+                        </div>
+                        <div>
+                            <div class="fw-semibold small">Sofia R.</div>
+                            <div class="text-secondary" style="font-size:.75rem;">Film enthusiast · Cape Town</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                <div class="card-body p-0">
+                    <div class="display-4 text-warning lh-1 mb-2">&ldquo;</div>
+                    <p class="text-white-50 fst-italic mb-4">
+                        Finally a movie blog that doesn't sound like a press release. Honest, warm, and genuinely passionate. I check it every week.
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold text-warning flex-shrink-0"
+                             style="width:40px;height:40px;">
+                            T
+                        </div>
+                        <div>
+                            <div class="fw-semibold small">Themba M.</div>
+                            <div class="text-secondary" style="font-size:.75rem;">Screenwriter · Johannesburg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                <div class="card-body p-0">
+                    <div class="display-4 text-warning lh-1 mb-2">&ldquo;</div>
+                    <p class="text-white-50 fst-italic mb-4">
+                        The fun facts section alone is worth bookmarking. I've dropped so many at dinner parties. People think I'm a genius now.
+                    </p>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold text-warning flex-shrink-0"
+                             style="width:40px;height:40px;">
+                            L
+                        </div>
+                        <div>
+                            <div class="fw-semibold small">Leila N.</div>
+                            <div class="text-secondary" style="font-size:.75rem;">Teacher &amp; movie lover · Nairobi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ============================
+     FUN FACT TEASER
+============================ -->
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2">
+        <div class="card bg-dark border-warning rounded-4 text-center p-5">
+            <p class="text-warning text-uppercase fw-semibold small mb-2">Did You Know?</p>
+            <div class="display-1 fw-bold text-warning mb-1">94</div>
+            <p class="text-secondary mb-3">mind-bending cinema facts — and counting</p>
+            <p class="text-white-50 fst-italic mb-4 mx-auto" style="max-width:520px;">
+                Did you know the T-Rex sounds in Jurassic Park were made from a baby elephant's sneeze
+                mixed with a tiger's growl? We have dozens more — the kind that rewrite your entire memory of a film.
+            </p>
+            <div>
+                <a asp-controller="Home" asp-action="RealFacts" class="btn btn-warning fw-semibold text-dark px-4">
+                    Explore Real Facts &amp; Fun →
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
