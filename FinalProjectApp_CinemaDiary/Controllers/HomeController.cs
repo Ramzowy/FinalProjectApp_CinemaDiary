@@ -18,6 +18,21 @@ namespace FinalProjectApp_CinemaDiary.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult MovieThoughts()
+        {
+            return View();
+        }
+
+        public IActionResult RealFacts()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
