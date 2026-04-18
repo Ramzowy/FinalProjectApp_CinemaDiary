@@ -1,20 +1,33 @@
-using System.Diagnostics;
 using FinalProjectApp_CinemaDiary.Models;
+using FinalProjectApp_CinemaDiary.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace FinalProjectApp_CinemaDiary.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        private readonly ApplicationDbContext context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            this.context = context;
         }
+
 
         public IActionResult Index()
         {
+            var recentMovies = context.Movies                          // Randomize the 4 items
+                                .OrderBy(m => Guid.NewGuid())
+                                .Take(4)     
+                                .ToList();
+
+            ViewBag.RecentMovies = recentMovies;
+            ViewBag.TotalMovies = context.Movies.Count();
+            ViewBag.TotalGenres = context.Movies.Select(m => m.Genre).Distinct().Count();
+
             return View();
         }
 

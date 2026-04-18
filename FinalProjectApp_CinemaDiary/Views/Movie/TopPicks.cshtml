@@ -1,1 +1,90 @@
-﻿
+﻿@model IEnumerable<FinalProjectApp_CinemaDiary.Models.Movie>
+
+@{
+    ViewData["Title"] = "Top Picks";
+}
+
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+
+<div class="full-bleed" style="background: linear-gradient(135deg, #1a0d00 0%, #0f0800 60%, #0f0f0f 100%);">
+    <div class="container py-5 text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">Our Favourites</p>
+        <h1 class="display-4 fw-bold text-white mb-3">Top Picks</h1>
+        <p class="text-white-50 mx-auto" style="max-width:560px;">
+            Only the films that genuinely earned five stars. No hype, no obligation —
+            every title on this page is here because it left a mark.
+        </p>
+    </div>
+</div>
+
+
+<div class="py-5">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+        <div>
+            <p class="text-warning text-uppercase fw-semibold small mb-1">★★★★★ Only</p>
+            <h2 class="display-5 fw-bold text-white mb-0">The Five-Star List</h2>
+        </div>
+        <span class="badge bg-warning text-dark fs-6 px-3 py-2">@Model.Count() Films</span>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var movie in Model)
+        {
+            <div class="col-sm-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    @if (!string.IsNullOrEmpty(movie.ImageUrl))
+                    {
+                        <img src="@movie.ImageUrl" class="card-img-top object-fit-cover" style="height:220px;" alt="@movie.Title">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                             style="height:220px;">
+                            🎬
+                        </div>
+                    }
+                    <div class="card-body">
+                        <div class="d-flex gap-2 mb-2 flex-wrap">
+                            <span class="badge bg-warning text-dark">@movie.Genre</span>
+                            <span class="badge bg-dark border border-secondary text-secondary">@movie.Year</span>
+                        </div>
+                        <h5 class="card-title fw-bold">@movie.Title</h5>
+                        <p class="card-text text-white-50 small lh-lg">@movie.Description</p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-warning">
+                            @for (int i = 0; i < movie.Rating; i++)
+                            {
+                                <text>★</text>
+                            }
+                        </span>
+                        <a asp-controller="Movie" asp-action="Details" asp-route-id="@movie.Id"
+                           class="btn btn-outline-warning btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2 text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">Not Enough?</p>
+        <h3 class="fw-bold text-white mb-3">Read Our Full Thoughts</h3>
+        <p class="text-white-50 mb-4">
+            Every film on this list has a deeper write-up on our Movie Thoughts page.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a asp-controller="Home" asp-action="MovieThoughts" class="btn btn-warning fw-semibold text-dark px-4">Movie Thoughts</a>
+            <a asp-controller="Movie" asp-action="Watchlist" class="btn btn-outline-warning px-4">See Watchlist</a>
+        </div>
+    </div>
+</div>
+

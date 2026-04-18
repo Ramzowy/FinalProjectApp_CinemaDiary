@@ -1,38 +1,44 @@
 ﻿
 
 
-using Microsoft.AspNetCore.Mvc;
 using FinalProjectApp_CinemaDiary.Models;
+using FinalProjectApp_CinemaDiary.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FinalProjectApp_CinemaDiary.Controllers
 {
     public class MovieController : Controller
     {
-        // Shared in-memory list used across all actions
-        private static List<Movie> GetMovies() => new List<Movie>
+
+
+        private readonly ApplicationDbContext context;
+
+        public MovieController(ApplicationDbContext context)
         {
-            new Movie { Id = 1, Title = "Dune: Part Two",    Year = 2024, Genre = "Sci-Fi",  Rating = 5, Description = "Denis Villeneuve's stunning continuation of Paul Atreides' journey across Arrakis.", ImageUrl = "" },
-            new Movie { Id = 2, Title = "Past Lives",         Year = 2023, Genre = "Drama",   Rating = 5, Description = "A quietly devastating meditation on love, choices, and the lives we leave behind.", ImageUrl = "" },
-            new Movie { Id = 3, Title = "Oppenheimer",        Year = 2023, Genre = "History", Rating = 5, Description = "Nolan at his most ambitious. A thunderous portrait of brilliance and consequence.", ImageUrl = "" },
-            new Movie { Id = 4, Title = "The Substance",      Year = 2024, Genre = "Horror",  Rating = 4, Description = "Bold, grotesque, and audaciously original body-horror about obsession with youth.", ImageUrl = "" },
-            new Movie { Id = 5, Title = "Poor Things",        Year = 2023, Genre = "Fantasy", Rating = 5, Description = "A visually intoxicating and wildly inventive reimagining of the Frankenstein myth.", ImageUrl = "" },
-            new Movie { Id = 6, Title = "The Zone of Interest", Year = 2023, Genre = "Drama", Rating = 5, Description = "A chilling, unforgettable portrait of banality and evil existing side by side.", ImageUrl = "" },
-        };
+            this.context = context;
+        }
+
+
+        private List<Movie> GetMovies()
+        {
+            return context.Movies.ToList();
+        }
 
         public IActionResult Index()
         {
-            return View(GetMovies());
+            var movies = context.Movies.ToList();
+            return View(movies);
         }
 
         public IActionResult TopPicks()
         {
-            var topPicks = GetMovies().Where(m => m.Rating == 5).ToList();
+            var topPicks = context.Movies.Where(m => m.Rating == 8).ToList();
             return View(topPicks);
         }
 
         public IActionResult Watchlist()
         {
-            // Films not yet watched — for now seeded separately
+            
             var watchlist = new List<Movie>
             { 
                 new Movie { Id = 7,  Title = "Anora",            Year = 2024, Genre = "Drama",   Rating = 0, Description = "Sean Baker's Palme d'Or winner about a young woman whose life is upended by an impulsive marriage.", ImageUrl = "" },

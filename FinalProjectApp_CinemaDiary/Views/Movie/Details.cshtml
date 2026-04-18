@@ -1,1 +1,150 @@
-﻿
+﻿@model FinalProjectApp_CinemaDiary.Models.Movie
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+<!-- BACK LINK -->
+<div class="pt-4 pb-2">
+    <a asp-controller="Movie" asp-action="TopPicks" class="text-secondary text-decoration-none small">
+        ← Back to Top Picks
+    </a>
+</div>
+
+<!-- HERO -->
+<div class="full-bleed bg-black py-5 mb-0">
+    <div class="container py-2">
+        <div class="row g-5 align-items-center">
+
+            <!-- Poster / placeholder -->
+            <div class="col-lg-3 text-center">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" class="img-fluid rounded-3 border border-secondary"
+                         style="max-height:360px;object-fit:cover;" alt="@Model.Title">
+                }
+                else
+                {
+                    <div class="bg-secondary rounded-3 d-flex align-items-center justify-content-center border border-secondary mx-auto"
+                         style="height:320px;width:220px;font-size:5rem;">
+                        🎬
+                    </div>
+                }
+            </div>
+
+            <!-- Info -->
+            <div class="col-lg-9 text-white">
+                <div class="d-flex gap-2 mb-3 flex-wrap">
+                    <span class="badge bg-warning text-dark">@Model.Genre</span>
+                    <span class="badge bg-dark border border-secondary text-secondary">@Model.Year</span>
+                </div>
+                <h1 class="display-4 fw-bold text-white mb-3">@Model.Title</h1>
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <span class="text-warning fs-4">
+                        @for (int i = 0; i < Model.Rating; i++)
+                        {
+                            <text>★</text>
+                        }
+                        @for (int i = Model.Rating; i < 5; i++)
+                        {
+                            <span class="text-secondary">★</span>
+                        }
+                    </span>
+                    <span class="text-secondary">@Model.Rating / 5</span>
+                </div>
+                <p class="text-white-50 lh-lg fs-5">@Model.Description</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- OUR TAKE -->
+<div class="py-5">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <p class="text-warning text-uppercase fw-semibold small mb-2">Our Take</p>
+            <h3 class="fw-bold text-white mb-4">What We Thought</h3>
+
+            <div class="card bg-dark border-secondary p-4 text-white mb-4">
+                <div class="d-flex gap-3 align-items-start">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold text-warning flex-shrink-0"
+                         style="width:44px;height:44px;">
+                        A
+                    </div>
+                    <div>
+                        <div class="fw-semibold mb-1">Adrian <span class="text-secondary small fw-normal">· Co-author</span></div>
+                        <p class="text-white-50 small lh-lg mb-0">
+                            Every frame of this film feels intentional. It's the kind of filmmaking that
+                            reminds you why cinema exists as an art form — not just as entertainment,
+                            but as a way of seeing the world differently than you did before you sat down.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-dark border-secondary p-4 text-white">
+                <div class="d-flex gap-3 align-items-start">
+                    <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center fw-bold text-warning flex-shrink-0"
+                         style="width:44px;height:44px;">
+                        K
+                    </div>
+                    <div>
+                        <div class="fw-semibold mb-1">Kira <span class="text-secondary small fw-normal">· Co-author</span></div>
+                        <p class="text-white-50 small lh-lg mb-0">
+                            I wasn't expecting to be as moved as I was. There's something in this film
+                            that gets underneath your skin quietly — and you don't notice until it's
+                            already there. The kind of film you want to press into people's hands.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <p class="text-warning text-uppercase fw-semibold small mb-3">Film Details</p>
+            <div class="card bg-dark border-secondary text-white p-3">
+                <ul class="list-unstyled mb-0">
+                    <li class="d-flex justify-content-between py-2 border-bottom border-secondary">
+                        <span class="text-secondary small">Title</span>
+                        <span class="small fw-semibold">@Model.Title</span>
+                    </li>
+                    <li class="d-flex justify-content-between py-2 border-bottom border-secondary">
+                        <span class="text-secondary small">Year</span>
+                        <span class="small fw-semibold">@Model.Year</span>
+                    </li>
+                    <li class="d-flex justify-content-between py-2 border-bottom border-secondary">
+                        <span class="text-secondary small">Genre</span>
+                        <span class="small fw-semibold">@Model.Genre</span>
+                    </li>
+                    <li class="d-flex justify-content-between py-2">
+                        <span class="text-secondary small">Our Rating</span>
+                        <span class="text-warning small fw-semibold">
+                            @for (int i = 0; i < Model.Rating; i++)
+                            {
+                                <text>★</text>
+                            }
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="mt-4 d-grid gap-2">
+                <a asp-controller="Movie" asp-action="TopPicks" class="btn btn-warning fw-semibold text-dark">
+                    ← Back to Top Picks
+                </a>
+                <a asp-controller="Movie" asp-action="Watchlist" class="btn btn-outline-warning">
+                    View Watchlist
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

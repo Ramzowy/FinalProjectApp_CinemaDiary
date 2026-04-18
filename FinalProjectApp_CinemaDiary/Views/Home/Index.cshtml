@@ -135,7 +135,7 @@
             <div class="row g-3 text-center">
                 <div class="col-6">
                     <div class="card bg-dark border-secondary rounded-3 py-4">
-                        <div class="display-4 fw-bold text-warning">147</div>
+                        <div class="display-4 fw-bold text-warning">@ViewBag.TotalMovies</div>
                         <div class="text-secondary small mt-1">Films Watched</div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                 </div>
                 <div class="col-6">
                     <div class="card bg-dark border-secondary rounded-3 py-4">
-                        <div class="display-4 fw-bold text-warning">12</div>
+                        <div class="display-4 fw-bold text-warning">@ViewBag.TotalGenres</div>
                         <div class="text-secondary small mt-1">Genres Explored</div>
                     </div>
                 </div>
@@ -180,91 +180,38 @@
         </div>
 
         <div class="row g-4">
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card bg-dark border-secondary h-100 text-white">
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
-                         style="height:200px;">
-                        🎬
-                    </div>
-                    <div class="card-body">
-                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Sci-Fi / Thriller</p>
-                        <h5 class="card-title fw-bold">Dune: Part Two</h5>
-                        <p class="text-secondary small mb-2">2024</p>
-                        <p class="card-text text-white-50 small">
-                            Denis Villeneuve's stunning continuation — visually overwhelming and emotionally complex.
-                        </p>
-                    </div>
-                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
-                        <span class="text-warning small">★★★★★</span>
-                        <span class="badge bg-warning text-dark">Watching</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card bg-dark border-secondary h-100 text-white">
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
-                         style="height:200px;">
-                        🎭
-                    </div>
-                    <div class="card-body">
-                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Drama</p>
-                        <h5 class="card-title fw-bold">Past Lives</h5>
-                        <p class="text-secondary small mb-2">2023</p>
-                        <p class="card-text text-white-50 small">
-                            A quietly devastating meditation on love and the lives we leave behind.
-                        </p>
-                    </div>
-                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
-                        <span class="text-warning small">★★★★½</span>
-                        <span class="badge bg-success">Watched</span>
+            @{
+                var recentMovies = ViewBag.RecentMovies as List<FinalProjectApp_CinemaDiary.Models.Movie> ?? new();
+            }
+            @foreach (var movie in recentMovies)
+            {
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card bg-dark border-secondary h-100 text-white">
+                        <img src="@movie.ImageUrl"
+                             class="card-img-top object-fit-cover"
+                             style="height:200px;"
+                             alt="@movie.Title"
+                             onerror="this.style.display='none'">
+                        <div class="card-body">
+                            <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">
+                                @movie.Genre
+                            </p>
+                            <h5 class="card-title fw-bold">@movie.Title</h5>
+                            <p class="text-secondary small mb-2">@movie.Year</p>
+                            <p class="card-text text-white-50 small">@movie.Description</p>
+                        </div>
+                        <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                            <span class="text-warning small">
+                                @for (int i = 0; i < movie.Rating; i++)
+                                {
+                                    <text>★</text>
+                                }
+                            </span>
+                            <span class="badge bg-success">Watched</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card bg-dark border-secondary h-100 text-white">
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
-                         style="height:200px;">
-                        🌑
-                    </div>
-                    <div class="card-body">
-                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">History / Thriller</p>
-                        <h5 class="card-title fw-bold">Oppenheimer</h5>
-                        <p class="text-secondary small mb-2">2023</p>
-                        <p class="card-text text-white-50 small">
-                            Nolan at his most ambitious. A thunderous portrait of brilliance and consequence.
-                        </p>
-                    </div>
-                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
-                        <span class="text-warning small">★★★★★</span>
-                        <span class="badge bg-success">Watched</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-lg-3">
-                <div class="card bg-dark border-secondary h-100 text-white">
-                    <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
-                         style="height:200px;">
-                        🔮
-                    </div>
-                    <div class="card-body">
-                        <p class="text-warning text-uppercase fw-semibold mb-1" style="font-size:.7rem;">Horror / Mystery</p>
-                        <h5 class="card-title fw-bold">The Substance</h5>
-                        <p class="text-secondary small mb-2">2024</p>
-                        <p class="card-text text-white-50 small">
-                            Bold, grotesque, and audaciously original. On our list this weekend.
-                        </p>
-                    </div>
-                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
-                        <span class="text-secondary small">— Unwatched —</span>
-                        <span class="badge bg-primary">Up Next</span>
-                    </div>
-                </div>
-            </div>
-
+            }
         </div>
     </div>
 </div>
