@@ -19,10 +19,10 @@ namespace FinalProjectApp_CinemaDiary.Controllers
 
         public IActionResult Index()
         {
-            var recentMovies = context.Movies                          // Randomize the 4 items
-                                .OrderBy(m => Guid.NewGuid())
-                                .Take(4)     
-                                .ToList();
+            var recentMovies = context.Movies
+                     .OrderByDescending(m => m.Year)
+                     .Take(4)
+                     .ToList();
 
             ViewBag.RecentMovies = recentMovies;
             ViewBag.TotalMovies = context.Movies.Count();

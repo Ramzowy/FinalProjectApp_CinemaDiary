@@ -1,1 +1,219 @@
-﻿
+﻿// MovieThoughts.cshtml
+
+@{
+    ViewData["Title"] = "Movie Thoughts";
+}
+
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+<!-- PAGE HEADER -->
+<div class="full-bleed" style="background: linear-gradient(135deg, #1a1a00 0%, #0f0f00 60%, #0f0f0f 100%);">
+    <div class="container py-5 text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">Our Takes</p>
+        <h1 class="display-4 fw-bold text-white mb-3">Movie Thoughts</h1>
+        <p class="text-white-50 mx-auto" style="max-width:560px;">
+            No spoiler warnings, no star systems — just raw, honest reflections on films that moved us,
+            challenged us, or refused to leave our heads.
+        </p>
+    </div>
+</div>
+
+<!-- FEATURED THOUGHT -->
+<div class="py-5">
+    <p class="text-warning text-uppercase fw-semibold small mb-3">Featured</p>
+    <div class="card bg-dark border-warning rounded-4 p-4 p-lg-5 text-white mb-2">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-8">
+                <div class="d-flex gap-2 mb-3">
+                    <span class="badge bg-warning text-dark">Drama</span>
+                    <span class="badge bg-dark border border-secondary text-secondary">2023</span>
+                    <span class="badge bg-dark border border-secondary text-secondary">By Kira</span>
+                </div>
+                <h2 class="fw-bold text-white mb-3">Past Lives Changed How I Think About Regret</h2>
+                <p class="text-white-50 lh-lg mb-3">
+                    I didn't cry during <em>Past Lives</em>. I cried three days later, standing in a queue,
+                    thinking about a decision I made years ago. That's the kind of film this is —
+                    it doesn't hit you in the cinema, it follows you home and waits.
+                    Celine Song's debut is so precise in its emotional architecture that every scene
+                    feels inevitable and heartbreaking at once.
+                </p>
+                <p class="text-white-50 lh-lg">
+                    What lingers most is the film's argument that the life you didn't live
+                    is always present in the one you did. In-yun, the Korean concept of fate
+                    that threads the film together, becomes both comforting and devastating
+                    depending on which character's eyes you're seeing through.
+                </p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-secondary rounded-3 d-flex align-items-center justify-content-center mb-3"
+                     style="height:200px;font-size:4rem;">
+                    🎭
+                </div>
+                <div class="text-warning fw-bold fs-4">★★★★★</div>
+                <div class="text-secondary small">Past Lives · 2023</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ALL THOUGHTS -->
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2">
+        <p class="text-warning text-uppercase fw-semibold small mb-1">All Entries</p>
+        <h2 class="display-5 fw-bold text-white mb-4">Our Thought Log</h2>
+
+        <div class="row g-4">
+
+            <!-- Thought 1 -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">Sci-Fi</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2024</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">By Adrian</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">Dune: Part Two is a Sensory Event, Not Just a Film</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        Villeneuve didn't adapt Dune — he inhabited it. Part Two is the rare sequel that
+                        makes the first film feel like a prologue. The sandworm scene alone is worth the
+                        price of any cinema ticket. What strikes me most is how it trusts silence.
+                        In a franchise landscape full of noise, Dune lets its images breathe.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div class="text-warning">★★★★★</div>
+                        <span class="text-secondary small">Dune: Part Two · 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought 2 -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">History</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2023</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">By Adrian</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">Oppenheimer: When Spectacle Serves the Story</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        Three hours. No bathroom break. No regrets. Nolan's Oppenheimer is the film
+                        that proved blockbuster cinema and genuine moral complexity don't have to be
+                        mutually exclusive. Cillian Murphy carries the weight of history on his face
+                        without saying a word. The Trinity sequence remains the most terrifying
+                        three minutes of cinema I've seen this decade.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div class="text-warning">★★★★★</div>
+                        <span class="text-secondary small">Oppenheimer · 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought 3 -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">Fantasy</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2023</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">By Kira</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">Poor Things is Gloriously, Defiantly Itself</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        Yorgos Lanthimos gave us a film that refuses to be anything other than
+                        exactly what it is. Emma Stone's performance is a masterclass in playing
+                        someone discovering the world for the first time with zero pre-existing
+                        shame or social filters. It's funny, filthy, beautiful, and somehow
+                        one of the most feminist films I've seen in years.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div class="text-warning">★★★★★</div>
+                        <span class="text-secondary small">Poor Things · 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought 4 -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">Horror</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2024</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">By Kira</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">The Substance is Not for the Faint-Hearted (Go Anyway)</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        Coralie Fargeat took every anxiety women have about ageing, beauty standards,
+                        and visibility — and turned them into something genuinely grotesque and brilliant.
+                        It's excessive by design. The excess IS the point. I left the cinema feeling
+                        disturbed, exhilarated, and oddly seen. Not an easy watch. An essential one.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div class="text-warning">★★★★</div>
+                        <span class="text-secondary small">The Substance · 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought 5 — Zone of Interest -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">Drama</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2023</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">By Adrian</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">The Zone of Interest: Horror Through Absence</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        Jonathan Glazer's film shows you almost nothing and makes you feel everything.
+                        A family living next to Auschwitz, going about their pleasant suburban life —
+                        the horror is entirely off-screen, heard but never shown. It may be the most
+                        disturbing film I've ever sat through, and one of the most important.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div class="text-warning">★★★★★</div>
+                        <span class="text-secondary small">The Zone of Interest · 2023</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thought 6 — Disagreement card -->
+            <div class="col-lg-6">
+                <div class="card bg-dark border-warning h-100 p-4 text-white">
+                    <div class="d-flex gap-2 mb-3 flex-wrap">
+                        <span class="badge bg-warning text-dark">We Disagree</span>
+                        <span class="badge bg-dark border border-secondary text-secondary">2024</span>
+                    </div>
+                    <h5 class="fw-bold mb-2">When We Don't Agree — And That's the Point</h5>
+                    <p class="text-white-50 small lh-lg mb-3">
+                        <strong class="text-white">Adrian:</strong> <em>Saltburn</em> is a gorgeous surface with nothing underneath. A vibe in search of a film.<br><br>
+                        <strong class="text-white">Kira:</strong> Saltburn IS the surface — that's the entire thesis. It's a film about the seductive emptiness of wealth. Barry Keoghan understood the assignment perfectly.<br><br>
+                        We've had this argument four times. We'll have it again.
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-auto">
+                        <div>
+                            <span class="text-warning small">Adrian: ★★★</span>
+                            <span class="text-secondary small mx-2">·</span>
+                            <span class="text-warning small">Kira: ★★★★½</span>
+                        </div>
+                        <span class="text-secondary small">Saltburn · 2023</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- FILTER HINT -->
+<div class="py-5 text-center">
+    <p class="text-white-50 mb-4">Want to explore by genre or see only our top-rated picks?</p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a asp-controller="Movie" asp-action="TopPicks" class="btn btn-warning fw-semibold text-dark">View Top Picks</a>
+        <a asp-controller="Movie" asp-action="Watchlist" class="btn btn-outline-warning">See Watchlist</a>
+    </div>
+</div>

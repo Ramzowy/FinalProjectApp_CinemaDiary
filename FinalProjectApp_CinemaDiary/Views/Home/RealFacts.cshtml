@@ -1,1 +1,222 @@
-﻿
+﻿// RealFacts.cshtml
+
+@{
+    ViewData["Title"] = "Real Facts & Fun";
+}
+
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+<!-- PAGE HEADER -->
+<div class="full-bleed" style="background: linear-gradient(135deg, #001a2d 0%, #000f1a 60%, #0f0f0f 100%);">
+    <div class="container py-5 text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">Trivia & Surprises</p>
+        <h1 class="display-4 fw-bold text-white mb-3">Real Facts &amp; Fun</h1>
+        <p class="text-white-50 mx-auto" style="max-width:560px;">
+            The behind-the-scenes stories, wild coincidences, and little-known truths that
+            make cinema even more extraordinary than what ends up on screen.
+        </p>
+    </div>
+</div>
+
+<!-- FACT OF THE WEEK -->
+<div class="py-5">
+    <div class="card bg-dark border-warning rounded-4 p-4 p-lg-5 text-white text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">🏆 Fact of the Week</p>
+        <div class="display-1 mb-3">🦖</div>
+        <h3 class="fw-bold text-white mb-3">The T-Rex Didn't Sound Like a T-Rex</h3>
+        <p class="text-white-50 lh-lg mx-auto" style="max-width:620px;">
+            The iconic roar of the T-Rex in <strong class="text-white">Jurassic Park (1993)</strong>
+            was created by mixing the sounds of a baby elephant's sneeze, a tiger's growl,
+            and an alligator's gurgle. Sound designer Gary Rydstrom recorded the elephant at
+            a wildlife sanctuary after it sneezed unexpectedly — and knew immediately he had something special.
+        </p>
+        <div class="mt-3">
+            <span class="badge bg-dark border border-warning text-warning">Sound Design</span>
+            <span class="badge bg-dark border border-secondary text-secondary ms-2">Jurassic Park · 1993</span>
+        </div>
+    </div>
+</div>
+
+<!-- FACTS GRID -->
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2">
+        <p class="text-warning text-uppercase fw-semibold small mb-1">The Collection</p>
+        <h2 class="display-5 fw-bold text-white mb-4">Mind-Bending Facts</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🎨</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Production Design</span>
+                    <h6 class="fw-bold text-warning mb-2">Mad Max: Fury Road took 15 years to make</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        George Miller spent 15 years developing <em>Fury Road</em>. The film used roughly
+                        80% practical effects — nearly everything you see on screen was really there, really moving,
+                        and really exploding. The storyboard alone was 3,500 panels long.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🎭</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Acting</span>
+                    <h6 class="fw-bold text-warning mb-2">Heath Ledger locked himself in a hotel room for a month</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        To prepare for the Joker in <em>The Dark Knight</em>, Ledger isolated himself
+                        for six weeks, keeping a diary written in character. He developed the Joker's voice,
+                        mannerisms, and psychology entirely alone before a single day of filming.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🎬</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Directing</span>
+                    <h6 class="fw-bold text-warning mb-2">Stanley Kubrick shot 127 takes of a single scene</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        For <em>The Shining</em>, Kubrick made Shelley Duvall film the baseball bat scene
+                        over 127 takes — a Guinness World Record. Duvall's exhaustion and distress were real,
+                        which Kubrick believed made the performance more authentic.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">💰</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Box Office</span>
+                    <h6 class="fw-bold text-warning mb-2">Paranormal Activity cost $15,000 and made $193 million</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        Shot over seven days in director Oren Peli's own house,
+                        <em>Paranormal Activity</em> became one of the most profitable films ever made
+                        relative to budget. It grossed over 12,800 times its production cost worldwide.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🌊</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Practical FX</span>
+                    <h6 class="fw-bold text-warning mb-2">Titanic's water was only waist-deep in most shots</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        Many of <em>Titanic's</em> flooding scenes were filmed in a tank of only
+                        waist-height water. Creative camera angles and forced perspective made it look
+                        like actors were swimming in fathoms of icy ocean. The cast still complained
+                        it was freezing cold.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🤝</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Improvisation</span>
+                    <h6 class="fw-bold text-warning mb-2">"Here's looking at you, kid" was improvised</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        Humphrey Bogart's iconic line in <em>Casablanca</em> was not in the script.
+                        It was something Bogart reportedly said to Ingrid Bergman between takes
+                        during filming — she later said it was one of her favourite lines in cinema.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🎵</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Score</span>
+                    <h6 class="fw-bold text-warning mb-2">John Williams wrote Jaws' theme in two notes</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        Spielberg laughed when Williams played him the two-note motif for <em>Jaws</em>,
+                        thinking it was a joke. Williams insisted it was the theme. That alternating
+                        E and F became one of the most recognisable pieces of film music ever written.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">🧊</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Behind the Scenes</span>
+                    <h6 class="fw-bold text-warning mb-2">The actors in The Shining really didn't like each other</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        Kubrick intentionally kept Jack Nicholson and Shelley Duvall from bonding on set.
+                        He encouraged the crew to side with Nicholson and treated Duvall harshly —
+                        all to manufacture the real tension between their characters.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card bg-dark border-secondary h-100 p-4 text-white">
+                    <div class="fs-2 mb-3">📽️</div>
+                    <span class="badge bg-dark border border-secondary text-secondary mb-2">Film History</span>
+                    <h6 class="fw-bold text-warning mb-2">The first film audiences ran from a train</h6>
+                    <p class="text-white-50 small lh-lg mb-0">
+                        When the Lumière Brothers screened <em>L'Arrivée d'un train en gare de La Ciotat</em>
+                        in 1896 — a 50-second clip of a train arriving at a station —
+                        audience members reportedly fled in terror, believing the train was real
+                        and heading straight for them.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="py-5">
+    <div class="text-center mb-5">
+        <p class="text-warning text-uppercase fw-semibold small mb-1">Browse by Category</p>
+        <h2 class="display-5 fw-bold text-white mb-2">What Kind of Fact Are You After?</h2>
+        <hr class="border-warning opacity-100 mx-auto" style="width:48px;border-width:3px;">
+    </div>
+    <div class="row g-3 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">🎭</div>
+                <div class="small fw-semibold text-warning">Acting</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">🎬</div>
+                <div class="small fw-semibold text-warning">Directing</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">🎵</div>
+                <div class="small fw-semibold text-warning">Score</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">💰</div>
+                <div class="small fw-semibold text-warning">Box Office</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">🌊</div>
+                <div class="small fw-semibold text-warning">Practical FX</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+            <div class="card bg-dark border-secondary text-center p-3 text-white h-100">
+                <div class="fs-2 mb-2">📽️</div>
+                <div class="small fw-semibold text-warning">Film History</div>
+            </div>
+        </div>
+    </div>
+</div>
+

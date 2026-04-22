@@ -1,1 +1,132 @@
-﻿
+﻿// Watchlist.cshtml
+
+@model IEnumerable<FinalProjectApp_CinemaDiary.Models.Movie>
+
+@{
+    ViewData["Title"] = "Watchlist";
+}
+
+<style>
+    .full-bleed {
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+    }
+</style>
+
+<!-- PAGE HEADER -->
+<div class="full-bleed" style="background: linear-gradient(135deg, #001a1a 0%, #000f0f 60%, #0f0f0f 100%);">
+    <div class="container py-5 text-center">
+        <p class="text-warning text-uppercase fw-semibold small mb-2">Coming Up</p>
+        <h1 class="display-4 fw-bold text-white mb-3">Watchlist</h1>
+        <p class="text-white-50 mx-auto" style="max-width:560px;">
+            Films we haven't watched yet but fully intend to. This list is sacred.
+            Touching it without watching something first is not allowed.
+        </p>
+    </div>
+</div>
+
+<!-- WATCHLIST ITEMS -->
+<div class="py-5">
+    <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+        <div>
+            <p class="text-warning text-uppercase fw-semibold small mb-1">The Queue</p>
+            <h2 class="display-5 fw-bold text-white mb-0">Films We're Watching Next</h2>
+        </div>
+        <span class="badge bg-primary fs-6 px-3 py-2">@Model.Count() Queued</span>
+    </div>
+
+    <div class="row g-4">
+        @foreach (var movie in Model)
+        {
+            <div class="col-sm-6 col-lg-3">
+                <div class="card bg-dark border-secondary h-100 text-white">
+                    @if (!string.IsNullOrEmpty(movie.ImageUrl))
+                    {
+                        <img src="@movie.ImageUrl" class="card-img-top object-fit-cover" style="height:200px;" alt="@movie.Title">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center fs-1"
+                             style="height:200px;">
+                            🎞️
+                        </div>
+                    }
+                    <div class="card-body">
+                        <div class="d-flex gap-2 mb-2 flex-wrap">
+                            <span class="badge bg-dark border border-secondary text-secondary">@movie.Genre</span>
+                            <span class="badge bg-dark border border-secondary text-secondary">@movie.Year</span>
+                        </div>
+                        <h5 class="card-title fw-bold">@movie.Title</h5>
+                        <p class="card-text text-white-50 small lh-lg">@movie.Description</p>
+                    </div>
+                    <div class="card-footer bg-dark border-secondary d-flex align-items-center justify-content-between">
+                        <span class="text-secondary small fst-italic">Not yet watched</span>
+                        <span class="badge bg-primary">Up Next</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- ALREADY WATCHED NUDGE -->
+<div class="full-bleed bg-black py-5">
+    <div class="container py-2">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-8">
+                <p class="text-warning text-uppercase fw-semibold small mb-1">Already Watched Something?</p>
+                <h3 class="fw-bold text-white mb-2">See What We've Already Reviewed</h3>
+                <p class="text-white-50 mb-0">
+                    Our Movie Thoughts page covers everything we've watched and written about so far.
+                    If it's on the watchlist today, it might have a full write-up by next week.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a asp-controller="Home" asp-action="MovieThoughts" class="btn btn-warning fw-semibold text-dark px-4">
+                    Movie Thoughts →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HOW WE CHOOSE -->
+<div class="py-5">
+    <div class="text-center mb-5">
+        <p class="text-warning text-uppercase fw-semibold small mb-1">Our Process</p>
+        <h2 class="display-5 fw-bold text-white mb-2">How a Film Gets on the Watchlist</h2>
+        <hr class="border-warning opacity-100 mx-auto" style="width:48px;border-width:3px;">
+    </div>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-center text-white">
+                <div class="fs-1 mb-3">🏆</div>
+                <h6 class="fw-bold text-warning mb-2">Award Season Buzz</h6>
+                <p class="text-white-50 small mb-0">
+                    If a film is generating serious awards conversation, we want to see it for ourselves
+                    before forming an opinion.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-center text-white">
+                <div class="fs-1 mb-3">📖</div>
+                <h6 class="fw-bold text-warning mb-2">Director Loyalty</h6>
+                <p class="text-white-50 small mb-0">
+                    If we've loved a director's previous work, their new film goes straight to the top
+                    of the list — no questions asked.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark border-secondary h-100 p-4 text-center text-white">
+                <div class="fs-1 mb-3">💬</div>
+                <h6 class="fw-bold text-warning mb-2">Word of Mouth</h6>
+                <p class="text-white-50 small mb-0">
+                    Sometimes someone whose taste we trust mentions a film with a certain look in their eyes.
+                    That's enough for us.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
